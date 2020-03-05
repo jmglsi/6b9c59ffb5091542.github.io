@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: jmglsi的博客
+subtitle: 爱看日漫/伪码农/学日语ing/话痨/喜欢一个人/不喜欢政治/网易云、苹果重度患者
+description: 
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: jmglsi
+language: zh-Hans
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -98,4 +98,6 @@ theme: aero-dual
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: https://e.coding.net/jmglsi/woc.moe/hello.git
+  branch: master
