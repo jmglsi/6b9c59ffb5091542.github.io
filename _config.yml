@@ -17,17 +17,6 @@ lazyload:
   onlypost: false
   # loadingImg: /images/loading.png
 
-# 目录导航
-toc:
-  maxdepth: 3
-  class: toc
-  slugify: transliteration
-  decodeEntities: false
-  anchor:
-    position: after
-    symbol: '#'
-    style: header-anchor
-
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
