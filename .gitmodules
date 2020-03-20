@@ -1,3 +1,3 @@
 [submodule "themes/aero-dual"]
 	path = themes/aero-dual
-	url = https://github.com/levblanc/hexo-theme-aero-dual.git
+	url = git@github.com:jmglsi/hexo-theme-aero-dual.git
