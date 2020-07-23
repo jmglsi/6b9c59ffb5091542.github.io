@@ -105,5 +105,6 @@ theme: aero-dual
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@e.coding.net:jmglsi/woc.moe/hello.git
+  repo: 
+    coding: https://pt2ojar814pa:bedbefb0061aa1384e5dacb35b9091a5d9174ac1@e.coding.net/jmglsi/woc.moe/hello.git
   branch: master
