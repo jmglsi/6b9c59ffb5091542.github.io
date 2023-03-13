@@ -4,11 +4,11 @@ toc: true
 date: 2020-03-06 12:12:08
 categories: Windows
 tags:
-- VS Code
-- Remote - WSL
 - Git
 - Nrm
-- oh-my-zsh
+- Oh-My-Zsh
+- Remote - WSL
+- VS Code
 cover: https://i.loli.net/2020/03/22/cfkVXAKFWHdM7ZC.jpg
 ---
 用 VS Code 做一些有趣♂的事。
@@ -43,13 +43,13 @@ cover: https://i.loli.net/2020/03/22/cfkVXAKFWHdM7ZC.jpg
 ## 代理本机
 > WSL 内 clone Github 项目无问题可跳过。
 
-```
+``` shell
 sudo vi ~/.bashrc
 ```
 
 添加如下内容
 
-```
+``` shell
 export http_proxy="http://localhost:1080"
 export https_proxy="http://localhost:1080"
 ```
@@ -78,7 +78,7 @@ export https_proxy="http://localhost:1080"
 
 输入命令对 WSL 的目录进行移动。
 
-```
+``` shell
 lxrunoffline m -n <WSL名称> -d <路径>
 ```
 
@@ -88,7 +88,7 @@ lxrunoffline m -n <WSL名称> -d <路径>
 
 ## 安装 Zsh
 
-```
+``` shell
 sudo apt install zsh
 ```
 顶部 **终端 -> 新建终端 -> 选择默认Shell** 或 **F1 -> Shell -> 终端:选择默认 Shell** 不出意外应该就能看到 **zsh** 了（这也是我最喜欢 VS Code的地方，对我这种系统命令太多记不住的人来说太方便了）。
@@ -98,8 +98,8 @@ sudo apt install zsh
 ## 安装 Oh My Zsh
 > Your terminal never felt this good before. [Oh My Zsh](https://ohmyz.sh)
 
-```
-xxxx% sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+``` shell
+xxxx% sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 Cloning Oh My Zsh...
 Cloning into '/Users/xxxx/.oh-my-zsh'...
 remote: Counting objects: 831, done.
@@ -110,11 +110,11 @@ Resolving deltas: 100% (14/14), done.
 Looking for an existing zsh config...
 Found ~/.zshrc. Backing up to ~/.zshrc.pre-oh-my-zsh
 Using the Oh My Zsh template file and adding it to ~/.zshrc
-             __                                     __   
-      ____  / /_     ____ ___  __  __   ____  _____/ /_  
-     / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ 
-    / /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / 
-    \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  
+             __                                     __
+      ____  / /_     ____ ___  __  __   ____  _____/ /_
+     / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \
+    / /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / /
+    \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/
                             /____/                       ....is now installed!
 Please look over the ~/.zshrc file to select plugins, themes, and options.
 p.s. Follow us at https://twitter.com/ohmyzsh.
@@ -123,7 +123,7 @@ p.p.s. Get stickers and t-shirts at http://shop.planetargon.com.
 
 ### 配置插件
 
-```
+``` shell
 cd ~/.oh-my-zsh/custom/plugins
 
 git clone https://github.com/wting/autojump.git
@@ -135,13 +135,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 ### 配置主题
 
-```
+``` shell
 sudo vi ~/.zshrc
 ```
 
 修改/添加 如下内容
 
-```
+``` shell
 DEFAULT_USER=$USER
 
 ZSH_DISABLE_COMPFIX=true
