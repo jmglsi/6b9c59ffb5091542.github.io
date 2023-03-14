@@ -105,5 +105,5 @@ theme: aero-dual
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:jmglsi/jmglsi.github.io.git,main
-  # branch: master
+  repo: git@github.com:jmglsi/jmglsi.github.io.git
+  branch: main
