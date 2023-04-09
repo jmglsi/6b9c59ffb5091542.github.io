@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="jmglsi">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="给网站接入 oauth2"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="jmglsi 的秘密小窝"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://blog.woc.moe"/>
+  
+    <link rel="alternate" href="/atom.xml" title="jmglsi 的秘密小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>jmglsi 的秘密小窝</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/19553df525e2cf4474c50b0e90c0073d.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">给网站接入 oauth2</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <article>
+        <div class="container typo">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-info text-muted">
+                        
+                            <!-- Author -->
+                            <span class="author info">By jmglsi</span>
+                            
+                                <!-- Date -->
+                                <span class="date-time info">On
+            <span class="date">2023-04-09</span>
+                                <span class="time">18:52:47</span>
+                                </span>
+                                
+                                    <!--  Categories  -->
+                                    <span class="categories info">Under 
+
+<a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+</span>
+                                    
+                    </div>
+                    <!-- Tags -->
+                    
+                        <div class="post-tags text-muted">
+                            Tags:
+                            
+
+<a class="tag" href="/tags/oauth2/">#oauth2</a>
+
+
+                        </div>
+                        
+                            <!-- Toc -->
+                            
+                                <div id="toc" class="toc-article">
+                                    <strong class="toc-title">目录</strong>
+                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-oauth2"><span class="toc-number">1.</span> <span class="toc-text">什么是 oauth2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%B8%80%E4%B8%8B"><span class="toc-number">2.</span> <span class="toc-text">实战一下</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7-oauth2-%E5%BA%94%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">申请 oauth2 应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E6%8E%88%E6%9D%83%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">拼接授权的链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-%E6%8D%A2%E5%8F%96-accessToken"><span class="toc-number">2.3.</span> <span class="toc-text">code 换取 accessToken</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#accessToken-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">2.4.</span> <span class="toc-text">accessToken 获取用户信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#oauth2-%E6%95%B4%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">oauth2 整理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#twitter-%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">4.1.</span> <span class="toc-text">twitter 的第一步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#twitter-%E7%9A%84%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">4.2.</span> <span class="toc-text">twitter 的第二步</span></a></li></ol></li></ol>
+                                </div>
+                                
+                                    <!-- Post Main Content -->
+                                    <div class="post-content">
+                                        <p>正好前几天有小伙伴问我，那就记录一下吧。</p>
+<span id="more"></span>
+
+<h1 id="什么是-oauth2"><a href="#什么是-oauth2" class="headerlink" title="什么是 oauth2"></a>什么是 oauth2</h1><p>这个解释的太多了，参考 <a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">理解OAuth 2.0</a>，就不再赘述了。</p>
+<h1 id="实战一下"><a href="#实战一下" class="headerlink" title="实战一下"></a>实战一下</h1><blockquote>
+<p>其实有很多种模式，这里直接用最简单的方式 (1次跳转 + 2次请求)，用 GitHub 示例。</p>
+</blockquote>
+<h2 id="申请-oauth2-应用"><a href="#申请-oauth2-应用" class="headerlink" title="申请 oauth2 应用"></a>申请 oauth2 应用</h2><p><a target="_blank" rel="noopener" href="https://github.com/settings/developers">点击这里</a> 申请，按照提示填好。把 <code>Client ID</code> 和 <code>Client secrets</code> 记录一下，后续需要。</p>
+<h2 id="拼接授权的链接"><a href="#拼接授权的链接" class="headerlink" title="拼接授权的链接"></a>拼接授权的链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps">GitHub 官方文档</a></p>
+</blockquote>
+<p>拼接完成大概是一个这样的链接：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET https://github.com/login/oauth/authorize?</span><br><span class="line">  client_id=xxx&amp;</span><br><span class="line">  redirect_uri=xxx&amp;</span><br><span class="line">  scope=xxx&amp;</span><br><span class="line">  state=xxx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">client_id 上方记录的 Client ID</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">redirect_uri 你填的回调地址，需要 url编码 一下</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">scope 申请的权限，如果只是绑定，不是很建议申请太多</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">state 防重放，可以md5一下时间戳</span></span><br></pre></td></tr></table></figure>
+
+<p><code>前端</code> 重定向到这个链接，让用户授权。</p>
+<h2 id="code-换取-accessToken"><a href="#code-换取-accessToken" class="headerlink" title="code 换取 accessToken"></a>code 换取 accessToken</h2><p>上一步用户授权允许以后，会把 <code>code</code> 回调给你填写的回调地址，比如我的回调地址是 <code>http://localhost/oauth2/github/callback</code>。</p>
+<p><code>后端</code> 发送以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST https://github.com/login/oauth/access_token</span><br><span class="line">client_id=xxx&amp;client_secret=xxx&amp;code=xxx&amp;redirect_uri=xxx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">client_id 上方记录的 Client ID</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">client_secret 上方记录的 Client secrets</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">code callback url 里的参数</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">redirect_uri 你填的回调地址，需要 url编码 一下</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要返回的格式为 json，user-agent 需要带上 <code>Accept: application/json</code>。</p>
+<h2 id="accessToken-获取用户信息"><a href="#accessToken-获取用户信息" class="headerlink" title="accessToken 获取用户信息"></a>accessToken 获取用户信息</h2><p>上一步拿到 <code>accessToken</code> 以后，就可以获取用户信息了。</p>
+<p><code>后端</code> 发送以下请求：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api.github.com/user</span><br></pre></td></tr></table></figure>
+
+<p>user-agent 需要带上 <code>Authorization: Bearer xxx</code>，<code>xxx</code> 是上方的 <code>accessToken</code>，中间有个空格。</p>
+<p>然后就能拿到用户信息了。到这里，算是接入成功了，剩下的就是自己的一些业务逻辑了。</p>
+<h1 id="oauth2-整理"><a href="#oauth2-整理" class="headerlink" title="oauth2 整理"></a>oauth2 整理</h1><blockquote>
+<p>我站接了 10 几个，所以顺带整理了一下，<a target="_blank" rel="noopener" href="https://pvp.91m.top/login">前往体验</a>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>平台<img width=50/></th>
+<th>开发文档<img width=25/></th>
+<th>申请地址<img width=25/></th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爱发电</td>
+<td><a target="_blank" rel="noopener" href="https://afdian.net/p/010ff078177211eca44f52540025c377">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://afdian.net/message/27f7cea2370d11e8ae8852540025c377">私信站长</a></td>
+<td>告知站长申请 <code>oauth2</code></td>
+</tr>
+<tr>
+<td>百度</td>
+<td><a target="_blank" rel="noopener" href="https://developer.baidu.com/wiki/index.php?title=docs/oauth/application">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://developer.baidu.com/console#app/project">网页创建</a></td>
+<td>创建以后无法删除，刷新不了验证码</td>
+</tr>
+<tr>
+<td>coding</td>
+<td><a target="_blank" rel="noopener" href="https://coding.net/help/openapi#oauth">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://jmglsi.coding.net/user/account/setting/applications">网页创建</a></td>
+<td><code>jmglsi</code> 改成自己的团队</td>
+</tr>
+<tr>
+<td>discord</td>
+<td><a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://discord.com/developers/applications">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>gitee</td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/api/v5/oauth_doc">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/oauth/applications">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>github</td>
+<td><a target="_blank" rel="noopener" href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/settings/developers">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>google</td>
+<td><a target="_blank" rel="noopener" href="https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow?hl=zh-cn">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/credentials">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>microsoft</td>
+<td><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/active-directory/develop/v2-oauth2-auth-code-flow">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade">网页创建</a></td>
+<td>创建的时候必须选择 <code>任何组织目录</code>，否则其他人没法授权</td>
+</tr>
+<tr>
+<td>qq</td>
+<td><a target="_blank" rel="noopener" href="https://wiki.connect.qq.com/%e4%bd%bf%e7%94%a8authorization_code%e8%8e%b7%e5%8f%96access_token">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://connect.qq.com/manage.html">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>telegram</td>
+<td><a target="_blank" rel="noopener" href="https://core.telegram.org/widgets/login#widget-configuration">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://core.telegram.org/widgets/login#widget-configuration">网页创建</a></td>
+<td>返回到 <code>/#/</code> 锚点，得特殊处理下</td>
+</tr>
+<tr>
+<td>twitter</td>
+<td><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/user-access-token">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://developer.twitter.com/en/portal/dashboard">网页创建</a></td>
+<td>最傻b的，下面会说</td>
+</tr>
+<tr>
+<td>weibo</td>
+<td><a target="_blank" rel="noopener" href="https://open.weibo.com/wiki/Oauth2/authorize">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://open.weibo.com/apps">网页创建</a></td>
+<td></td>
+</tr>
+<tr>
+<td>yuque</td>
+<td><a target="_blank" rel="noopener" href="https://www.yuque.com/yuque/developer/authorizing-oauth-apps">开发文档</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.yuque.com/settings/applications">网页创建</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><blockquote>
+<p>因为一些你懂都懂的原因，后端访问国外的 oauth2 体验并不佳 (除非你的服务器在国外)，可能需要服务器上挂一个代理。</p>
+</blockquote>
+<h2 id="twitter-的第一步"><a href="#twitter-的第一步" class="headerlink" title="twitter 的第一步"></a>twitter 的第一步</h2><blockquote>
+<p>跳转到授权页面</p>
+</blockquote>
+<p>跳转链接后面需要加上 <code>&amp;code_challenge=challenge&amp;code_challenge_method=plain</code> 否则必定错误。</p>
+<h2 id="twitter-的第二步"><a href="#twitter-的第二步" class="headerlink" title="twitter 的第二步"></a>twitter 的第二步</h2><blockquote>
+<p>获取 accessToken</p>
+</blockquote>
+<p>POST内容需要加上 <code>&amp;code_verifier=challenge</code>，user-agent 需要加上 <code>Authorization: Basic xxx</code>，<code>xxx</code> 需要 <code>base64_encode(&quot;&#123;$client_id&#125;:&#123;$client_secret&#125;&quot;)</code> 否则必定报错。</p>
+
+                                    </div>
+                </div>
+            </div>
+
+            <script src="https://giscus.woc.moe/client.js"
+                data-repo="jmglsi/jmglsi.github.io"
+                data-repo-id="R_kgDOHULyeA"
+                data-category="评论"
+                data-category-id="DIC_kwDOHULyeM4CPMjc"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async
+            >
+            </script>
+        </div>
+    </article>
+
+
+    <!-- Footer -->
+<br />
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">CC BY-NC-ND 3.0</a> 协议</p>
+                <p class="copyright text-muted">
+                    Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a> Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+                    <p class="copyright text-muted">
+                        Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+    <script>
+        var scrollHeight = document.body.scrollHeight;
+        var toc = document.getElementById("toc");
+        if (toc) {
+            document.addEventListener("scroll", function() {
+                var scrollTop = document.scrollTop || window.pageYOffset || document.body.scrollTop;
+                var newTop = 425 * (1 - scrollTop / scrollHeight);
+                if (newTop < 25) newTop = 25;
+                toc.style.top = newTop + "px";
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+            codeBlocks.forEach(function(block, index) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+  
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(a){a.imageLazyLoadSetting.processImages=t;var i=a.imageLazyLoadSetting.isSPA,o=a.imageLazyLoadSetting.preloadRatio||1,r=c();function c(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function d(t,e){if(t.hasAttribute("bg-lazy"))return t.removeAttribute("bg-lazy"),void(e&&e());var n=new Image,a=t.getAttribute("data-original");n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a)}function t(){i&&(r=c());for(var t=0;t<r.length;t++)e=r[t],0<=(n=e.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(a.innerHeight*o||document.documentElement.clientHeight*o)&&function(){var e=r[t];d(e,function(){r=r.filter(function(t){return e!==t}),a.imageLazyLoadSetting.onImageLoaded&&a.imageLazyLoadSetting.onImageLoaded(e)})}();var e,n}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),a.addEventListener("resize",e),a.addEventListener("orientationchange",e)}(this);</script></body>
+</html>
+
