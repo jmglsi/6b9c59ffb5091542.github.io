@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="jmglsi">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="内网折腾之打洞组网"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="jmglsi 的秘密小窝"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://blog.woc.moe"/>
+  
+    <link rel="alternate" href="/atom.xml" title="jmglsi 的秘密小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>jmglsi 的秘密小窝</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/19553df525e2cf4474c50b0e90c0073d.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">内网折腾之打洞组网</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <article>
+        <div class="container typo">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-info text-muted">
+                        
+                            <!-- Author -->
+                            <span class="author info">By jmglsi</span>
+                            
+                                <!-- Date -->
+                                <span class="date-time info">On
+            <span class="date">2023-10-11</span>
+                                <span class="time">09:34:09</span>
+                                </span>
+                                
+                                    <!--  Categories  -->
+                                    <span class="categories info">Under 
+
+<a href="/categories/%E5%86%85%E7%BD%91/">内网</a>
+</span>
+                                    
+                    </div>
+                    <!-- Tags -->
+                    
+                        <div class="post-tags text-muted">
+                            Tags:
+                            
+
+<a class="tag" href="/tags/ZeroTier/">#ZeroTier</a> <a class="tag" href="/tags/Tailscale/">#Tailscale</a>
+
+
+                        </div>
+                        
+                            <!-- Toc -->
+                            
+                                <div id="toc" class="toc-article">
+                                    <strong class="toc-title">目录</strong>
+                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-number">3.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="toc-number">4.</span> <span class="toc-text">第四步</span></a></li></ol>
+                                </div>
+                                
+                                    <!-- Post Main Content -->
+                                    <div class="post-content">
+                                        <p>家里是有公网 ip 的，写写没有的情况，应该会有需要。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>你可以尝试跟运营商打电话说要装监控，有概率能要到。<br>要得到的话路由器 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ddns/670146">DDNS</a> 端口转发也可以，但我感觉不太安全。<br>也可以用内网穿透服务 (<a target="_blank" rel="noopener" href="https://ngrok.cc/">ngrok</a>、<a target="_blank" rel="noopener" href="https://hsk.oray.com/">花生壳</a> 等等)，当然一般会有流量带宽限制。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zerotier.com/">ZeroTier</a> 和 <a target="_blank" rel="noopener" href="https://tailscale.com/">Tailscale</a> 都可以打洞组网，后者的配置相对简单一些。</p>
+<p>下面是 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1850766">软路由</a> 上配置 <code>ZeroTier</code> 需要注意的地方。</p>
+<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>我刷的 <a target="_blank" rel="noopener" href="https://openwrt.org/">OpenWrt</a>，装好插件以后在这里。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.12.27.png" alt="截屏2023-10-11_18.12.27.png"></p>
+<h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><blockquote>
+<p>你想和他人组网的话，可以填其他人的，同样需要别人允许。</p>
+</blockquote>
+<p>输入你在 <code>ZeroTier</code> 注册分配的 <code>Network ID</code>，然后保存并应用。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.13.52.png" alt="截屏2023-10-11_18.13.52.png"></p>
+<p>勾选允许客户端 NAT。</p>
+<h1 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h1><p><code>ZeroTier</code> 官网 <code>Network ID</code> 点进去，拉到底下【Auth】允许下你的路由器设备。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.23.27.png" alt="截屏2023-10-11_18.23.27.png"></p>
+<p>然后往上滑滑。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.24.34.png" alt="截屏2023-10-11_18.24.34.png"></p>
+<p><code>Destination</code> 是你的内网段，比如我家就是 <code>192.168.24.x</code>，<code>Via</code> 填下面 <code>ZeroTier</code> 分配的虚拟内网 ip。当然，你也可以手动重新指定一个好记的 (<code>192.168.191.10</code> 就是我重新指定的)。然后 Submit 就好了。</p>
+<h1 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h1><blockquote>
+<p>软路由上还需要配置一下下。<br>你加入了几个 <code>Network ID</code> 就得搞几个接口，建议用前缀区分下。</p>
+</blockquote>
+<p>【网络-接口】新建一个接口，不配置协议，选择 <code>zt</code> 开头的。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.32.14.png" alt="截屏2023-10-11_18.32.14.png"></p>
+<p>【网络-防火墙-自定义规则】<code>ztid</code> 替换成接口分配的 <code>ztxxxxxxx</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 自己</span><br><span class="line">iptables -I FORWARD -i ztid -j ACCEPT</span><br><span class="line">iptables -I FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -I POSTROUTING -o ztid -j MASQUERADE</span><br><span class="line"></span><br><span class="line"># 其他人</span><br><span class="line">iptables -I FORWARD -i ztid -j ACCEPT</span><br><span class="line">iptables -I FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -I POSTROUTING -o ztid -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p>【网络-防火墙】点进去把刚新建的接口钩上。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.35.40.png" alt="截屏2023-10-11_18.35.40.png"></p>
+<p>保存并应用。</p>
+<blockquote>
+<p>到这里已经是配置好了。</p>
+</blockquote>
+<p>接下来用你的手机或者别的网里的设备装个 <code>ZeroTier</code> 客户端，授权完试一下原来的内网网段，应该是好了。</p>
+
+                                    </div>
+                </div>
+            </div>
+
+            <script src="https://giscus.woc.moe/client.js"
+                data-repo="jmglsi/jmglsi.github.io"
+                data-repo-id="R_kgDOHULyeA"
+                data-category="评论"
+                data-category-id="DIC_kwDOHULyeM4CPMjc"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async
+            >
+            </script>
+        </div>
+    </article>
+
+
+    <!-- Footer -->
+<br />
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">CC BY-NC-ND 3.0</a> 协议</p>
+                <p class="copyright text-muted">
+                    Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a> Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+                    <p class="copyright text-muted">
+                        Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+    <script>
+        var scrollHeight = document.body.scrollHeight;
+        var toc = document.getElementById("toc");
+        if (toc) {
+            document.addEventListener("scroll", function() {
+                var scrollTop = document.scrollTop || window.pageYOffset || document.body.scrollTop;
+                var newTop = 425 * (1 - scrollTop / scrollHeight);
+                if (newTop < 25) newTop = 25;
+                toc.style.top = newTop + "px";
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+            codeBlocks.forEach(function(block, index) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+  
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(a){a.imageLazyLoadSetting.processImages=t;var i=a.imageLazyLoadSetting.isSPA,o=a.imageLazyLoadSetting.preloadRatio||1,r=c();function c(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function d(t,e){if(t.hasAttribute("bg-lazy"))return t.removeAttribute("bg-lazy"),void(e&&e());var n=new Image,a=t.getAttribute("data-original");n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a)}function t(){i&&(r=c());for(var t=0;t<r.length;t++)e=r[t],0<=(n=e.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(a.innerHeight*o||document.documentElement.clientHeight*o)&&function(){var e=r[t];d(e,function(){r=r.filter(function(t){return e!==t}),a.imageLazyLoadSetting.onImageLoaded&&a.imageLazyLoadSetting.onImageLoaded(e)})}();var e,n}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),a.addEventListener("resize",e),a.addEventListener("orientationchange",e)}(this);</script></body>
+</html>
+
