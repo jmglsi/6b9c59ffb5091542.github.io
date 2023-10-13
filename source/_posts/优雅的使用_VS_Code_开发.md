@@ -2,7 +2,7 @@
 title: 优雅的使用 VS Code 开发
 toc: true
 date: 2020-03-06 12:12:08
-categories: Windows
+categories: 开发
 tags:
 - Git
 - Nrm

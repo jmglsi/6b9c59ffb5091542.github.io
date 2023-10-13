@@ -1,22 +1,22 @@
 ---
-title: 给网站接入 oauth2
+title: 给网站接入 OAuth2
 toc: true
 date: 2023-04-09 15:14:36
 categories: 随笔
 tags:
-- oauth2
+- OAuth2
 ---
 正好前几天有小伙伴问我，那就记录一下吧。
 <!--more-->
 
-# 什么是 oauth2
+# 什么是 OAuth2
 
 这个解释的太多了，参考 [理解OAuth 2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)，就不再赘述了。
 
 # 实战一下
 > 其实有很多种模式，这里直接用最简单的方式 (1次跳转 + 2次请求)，用 GitHub 示例。
 
-## 申请 oauth2 应用
+## 申请 OAuth2 应用
 
 [点击这里](https://github.com/settings/developers) 申请，按照提示填好。把 `Client ID` 和 `Client secrets` 记录一下，后续需要。
 
@@ -72,12 +72,12 @@ user-agent 需要带上 `Authorization: Bearer xxx`，`xxx` 是上方的 `access
 
 然后就能拿到用户信息了。到这里，算是接入成功了，剩下的就是自己的一些业务逻辑了。
 
-# oauth2 整理
+# OAuth2 整理
 > 我站接了 10 几个，所以顺带整理了一下，[前往体验](https://pvp.91m.top/login)。
 
 | 平台<img width=50/> | 开发文档<img width=25/>                                                                                    | 申请地址<img width=25/>                                                                       | 注意事项                                             |
 |---------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|------------------------------------------------------|
-| 爱发电              | [开发文档](https://afdian.net/p/010ff078177211eca44f52540025c377)                                          | [私信站长](https://afdian.net/message/27f7cea2370d11e8ae8852540025c377)                       | 告知站长申请 `oauth2`                                |
+| 爱发电              | [开发文档](https://afdian.net/p/010ff078177211eca44f52540025c377)                                          | [私信站长](https://afdian.net/message/27f7cea2370d11e8ae8852540025c377)                       | 告知站长申请 `OAuth2`                                |
 | 百度                | [开发文档](https://developer.baidu.com/wiki/index.php?title=docs/oauth/application)                        | [网页创建](https://developer.baidu.com/console#app/project)                                   | 创建以后无法删除，刷新不了验证码                      |
 | coding              | [开发文档](https://coding.net/help/openapi#oauth)                                                          | [网页创建](https://jmglsi.coding.net/user/account/setting/applications)                       | `jmglsi` 改成自己的团队                              |
 | discord             | [开发文档](https://discord.com/developers/docs/topics/oauth2)                                              | [网页创建](https://discord.com/developers/applications)                                       |                                                      |
@@ -92,7 +92,7 @@ user-agent 需要带上 `Authorization: Bearer xxx`，`xxx` 是上方的 `access
 | yuque               | [开发文档](https://www.yuque.com/yuque/developer/authorizing-oauth-apps)                                   | [网页创建](https://www.yuque.com/settings/applications)                                       |                                                      |
 
 # 注意事项
-> 因为一些你懂都懂的原因，后端访问国外的 oauth2 体验并不佳 (除非你的服务器在国外)，可能需要服务器上挂一个代理。
+> 因为一些你懂都懂的原因，后端访问国外的 OAuth2 体验并不佳 (除非你的服务器在国外)，可能需要服务器上挂一个代理。
 
 ## twitter 的第一步
 > 跳转到授权页面
