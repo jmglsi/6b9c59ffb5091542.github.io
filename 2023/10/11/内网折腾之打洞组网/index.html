@@ -88,7 +88,7 @@
                                 <!-- Date -->
                                 <span class="date-time info">On
             <span class="date">2023-10-11</span>
-                                <span class="time">13:57:07</span>
+                                <span class="time">14:02:57</span>
                                 </span>
                                 
                                     <!--  Categories  -->
@@ -113,7 +113,7 @@
                             
                                 <div id="toc" class="toc-article">
                                     <strong class="toc-title">目录</strong>
-                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-number">3.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="toc-number">4.</span> <span class="toc-text">第四步</span></a></li></ol>
+                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%98%E7%BD%91%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">官网配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">防火墙配置</span></a></li></ol>
                                 </div>
                                 
                                     <!-- Post Main Content -->
@@ -126,20 +126,20 @@
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.zerotier.com/">ZeroTier</a> 和 <a target="_blank" rel="noopener" href="https://tailscale.com/">Tailscale</a> 都可以打洞组网，后者的配置相对简单一些。</p>
 <p>下面是 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1850766">软路由</a> 上配置 <code>ZeroTier</code> 需要注意的地方。</p>
-<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>我刷的 <a target="_blank" rel="noopener" href="https://openwrt.org/">OpenWrt</a>，装好插件以后在这里。</p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>我刷的 <a target="_blank" rel="noopener" href="https://openwrt.org/">OpenWrt</a>，装好插件以后在这里。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.12.27.png" alt="截屏2023-10-11_18.12.27.png"></p>
-<h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><blockquote>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><blockquote>
 <p>你想和他人组网的话，可以填其他人的，同样需要别人允许。</p>
 </blockquote>
 <p>输入你在 <code>ZeroTier</code> 注册分配的 <code>Network ID</code>，然后保存并应用。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.13.52.png" alt="截屏2023-10-11_18.13.52.png"></p>
 <p>勾选允许客户端 NAT。</p>
-<h1 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h1><p><code>ZeroTier</code> 官网 <code>Network ID</code> 点进去，拉到底下【Auth】允许下你的路由器设备。</p>
+<h1 id="官网配置"><a href="#官网配置" class="headerlink" title="官网配置"></a>官网配置</h1><p><code>ZeroTier</code> 官网 <code>Network ID</code> 点进去，拉到底下【Auth】允许下你的路由器设备。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.23.27.png" alt="截屏2023-10-11_18.23.27.png"></p>
 <p>然后往上滑滑。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.24.34.png" alt="截屏2023-10-11_18.24.34.png"></p>
 <p><code>Destination</code> 是你的内网段，比如我家就是 <code>192.168.24.x</code>，<code>Via</code> 填下面 <code>ZeroTier</code> 分配的虚拟内网 ip。当然，你也可以手动重新指定一个好记的 (<code>192.168.191.10</code> 就是我重新指定的)。然后 Submit 就好了。</p>
-<h1 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h1><blockquote>
+<h1 id="防火墙配置"><a href="#防火墙配置" class="headerlink" title="防火墙配置"></a>防火墙配置</h1><blockquote>
 <p>软路由上还需要配置一下下。<br>你加入了几个 <code>Network ID</code> 就得搞几个接口，建议用前缀区分下。</p>
 </blockquote>
 <p>【网络-接口】新建一个接口，不配置协议，选择 <code>zt</code> 开头的。</p>
