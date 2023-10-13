@@ -11,10 +11,11 @@ tags:
 - VS Code
 cover: https://i.loli.net/2020/03/22/cfkVXAKFWHdM7ZC.jpg
 ---
-用 VS Code 做一些有趣♂的事。
+用 VS Code 做一些有趣 ♂ 的事。
 <!-- more -->
 
-![QQ截图20200306120919.png](https://piccdn.freejishu.com/images/2020/03/06/Pn5d3p.png)
+![QQ截图20200306120919.png](/images/QQ截图20200306120919.png)
+
 <center>先来一张配置好的图！</center>
 
 # 配置 WSL
@@ -26,9 +27,9 @@ cover: https://i.loli.net/2020/03/22/cfkVXAKFWHdM7ZC.jpg
 
 控制面板 -> 程序和功能 -> 启用或关闭Windows功能 -> **勾选** 适用于 Linux 的 Windows 子系统 安装完重启一下电脑。
 
-> ubuntu的LTS版本和普通版本在更新的时候到底有什么区别？ [知乎](https://www.zhihu.com/question/54699176)
+> Ubuntu 的 LTS 版本和普通版本在更新的时候到底有什么区别？ [知乎](https://www.zhihu.com/question/54699176)
 
-![QQ截图20200306202625.png](https://piccdn.freejishu.com/images/2020/03/06/Pn5uhr.png)
+![QQ截图20200306202625.png](/images/QQ截图20200306202625.png)
 
 我安装的 ![QQ截图20200306124720.png](/images/QQ截图20200306124720.png) Ubuntu 18.04 LTS ，VS Code 需要安装 [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)。
 
@@ -59,7 +60,7 @@ export https_proxy="http://localhost:1080"
 保存，重启下 VS Code
 
 ## WSL1 升级 WSL2
-> WSL升级WSL2，WSL2安装说明 [刘明野的博客](https://www.liumingye.cn/archives/326.html)
+> WSL1 升级 WSL2，WSL2 的安装说明 [刘明野的博客](https://www.liumingye.cn/archives/326.html)
 
 这个教程挺多的，需要注意的是，转换的时候把傻逼微软的杀毒软件关了。
 
