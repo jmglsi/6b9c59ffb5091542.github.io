@@ -88,7 +88,7 @@
                                 <!-- Date -->
                                 <span class="date-time info">On
             <span class="date">2023-10-11</span>
-                                <span class="time">15:36:16</span>
+                                <span class="time">15:43:23</span>
                                 </span>
                                 
                                     <!--  Categories  -->
@@ -122,14 +122,14 @@
 <span id="more"></span>
 
 <blockquote>
-<p>你可以尝试跟运营商打电话说要装监控，有概率能要到。<br>要得到的话路由器 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ddns/670146">DDNS</a> 端口转发也可以，但我感觉不太安全。<br>也可以用内网穿透服务 (<a target="_blank" rel="noopener" href="https://ngrok.cc/">ngrok</a>、<a target="_blank" rel="noopener" href="https://hsk.oray.com/">花生壳</a> 等等)，当然一般会有流量带宽限制。</p>
+<p>可以尝试跟运营商打电话说要装监控，有概率能要到。<br>要得到的话路由器 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ddns/670146">DDNS</a> 端口转发也可以，但我感觉不太安全。<br>也可以用内网穿透服务 (<a target="_blank" rel="noopener" href="https://ngrok.cc/">ngrok</a>、<a target="_blank" rel="noopener" href="https://hsk.oray.com/">花生壳</a> 等等)，当然一般会有流量带宽限制。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.zerotier.com/">ZeroTier</a> 和 <a target="_blank" rel="noopener" href="https://tailscale.com/">Tailscale</a> 都可以打洞组网，后者的配置相对简单一些。</p>
 <p>下面是 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1850766">软路由</a> 上配置 <code>ZeroTier</code> 需要注意的地方。</p>
 <h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>我刷的 <a target="_blank" rel="noopener" href="https://openwrt.org/">OpenWrt</a>，装好插件以后在这里。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.12.27.png" alt="截屏2023-10-11_18.12.27.png"></p>
 <h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><blockquote>
-<p>你想和他人组网的话，可以填其他人的，同样需要别人允许。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hanziyuan08/article/details/120175041">Zerotier 总是提示 REQUESTING_CONFIGURATION</a> 的解决办法</p>
+<p>一直 <a target="_blank" rel="noopener" href="https://blog.csdn.net/hanziyuan08/article/details/120175041">REQUESTING_CONFIGURATION</a> 的解决办法。<br>想和他人组网的话，可以填其他人的，同样需要别人允许。</p>
 </blockquote>
 <p>输入你在 <code>ZeroTier</code> 注册分配的 <code>Network ID</code>，然后保存并应用。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.13.52.png" alt="截屏2023-10-11_18.13.52.png"></p>
@@ -138,9 +138,9 @@
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.23.27.png" alt="截屏2023-10-11_18.23.27.png"></p>
 <p>然后往上滑滑。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.24.34.png" alt="截屏2023-10-11_18.24.34.png"></p>
-<p><code>Destination</code> 是你的内网段，比如我家就是 <code>192.168.24.x</code>，<code>Via</code> 填下面 <code>ZeroTier</code> 分配的虚拟内网 ip。当然，你也可以手动重新指定一个好记的 (<code>192.168.191.10</code> 就是我重新指定的)。然后 Submit 就好了。</p>
+<p><code>Destination</code> 是你的内网段，比如我家就是 <code>192.168.24.x</code>，<code>Via</code> 填下面 <code>ZeroTier</code> 分配的虚拟内网 ip。当然，也可以手动重新指定一个好记的 (<code>192.168.191.10</code> 就是我重新指定的)。然后 Submit 就好了。</p>
 <h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><blockquote>
-<p>软路由上还需要配置一下下。<br>你加入了几个 <code>Network ID</code> 就得搞几个接口，建议用前缀区分下。</p>
+<p>软路由上还需要配置一下下。<br>加入了几个 <code>Network ID</code> 就得搞几个接口，建议用前缀区分下。</p>
 </blockquote>
 <p>【网络-接口】新建一个接口，不配置协议，选择 <code>zt</code> 开头的。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.32.14.png" alt="截屏2023-10-11_18.32.14.png"></p>
