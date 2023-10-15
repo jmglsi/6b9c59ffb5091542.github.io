@@ -92,7 +92,7 @@ user-agent 需要带上 `Authorization: Bearer xxx`，`xxx` 是上方的 `access
 | yuque               | [开发文档](https://www.yuque.com/yuque/developer/authorizing-oauth-apps)                                   | [网页创建](https://www.yuque.com/settings/applications)                                       |                                                      |
 
 # 注意事项
-> 因为一些你懂都懂的原因，后端访问国外的 OAuth2 体验并不佳 (除非你的服务器在国外)，可能需要服务器上挂一个代理。
+> 因为一些懂都懂的原因，后端访问国外的 OAuth2 体验并不佳 (除非服务器在国外)，可能需要服务器上挂一个代理。
 
 ## twitter 的第一步
 > 跳转到授权页面
