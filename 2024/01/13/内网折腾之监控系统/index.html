@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="jmglsi">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="内网折腾之私人影院"/>
+  <meta property="og:title" content="内网折腾之监控系统"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="jmglsi 的秘密小窝"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">内网折腾之私人影院</p>
+          <p class="title">内网折腾之监控系统</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -87,7 +87,7 @@
                             
                                 <!-- Date -->
                                 <span class="date-time info">On
-            <span class="date">2023-10-10</span>
+            <span class="date">2024-01-13</span>
                                 <span class="time">10:24:47</span>
                                 </span>
                                 
@@ -104,7 +104,7 @@
                             Tags:
                             
 
-<a class="tag" href="/tags/NAS/">#NAS</a>
+<a class="tag" href="/tags/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86/">#海康威视</a>
 
 
                         </div>
@@ -113,65 +113,25 @@
                             
                                 <div id="toc" class="toc-article">
                                     <strong class="toc-title">目录</strong>
-                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-alist"><span class="toc-number">1.</span> <span class="toc-text">配置 alist</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rclone-%E6%8C%82%E8%BD%BD%E4%BA%91%E7%9B%98"><span class="toc-number">2.</span> <span class="toc-text">rclone 挂载云盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#plex-%E4%BD%BF%E7%94%A8%E4%BA%91%E7%9B%98"><span class="toc-number">3.</span> <span class="toc-text">plex 使用云盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E8%A7%86%E7%9B%B4%E6%92%AD"><span class="toc-number">4.</span> <span class="toc-text">电视直播</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">5.</span> <span class="toc-text">其他</span></a></li></ol>
+                                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%81%90%E6%80%96%E7%9A%84%E4%BA%8B%E6%83%85"><span class="toc-number">1.</span> <span class="toc-text">恐怖的事情</span></a></li></ol>
                                 </div>
                                 
                                     <!-- Post Main Content -->
                                     <div class="post-content">
-                                        <p>用了 NAS 有一段时间了，体验非常好！</p>
+                                        <p>搬过来没多久，新车也刚买没多久，监控还没装就被打了，难受。</p>
 <span id="more"></span>
 
-<p>系统用的 <a target="_blank" rel="noopener" href="https://unraid.net/zh">unraid</a>，可以先试用 1 个月，再决定买不买，有优惠码 200+ 就可以拿下了。</p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_14.43.20.png" alt="截屏2023-10-10_14.43.20.png"></p>
-<p>用了这么长时间，体验来说 <a target="_blank" rel="noopener" href="https://www.plex.tv/">plex</a> &gt; <a target="_blank" rel="noopener" href="https://jellyfin.org/">jellyfin</a>，plex 刮的又快又准（</p>
-<blockquote>
-<p>怎么添加本地的资源可以参考网上其他的教程。这次主要写下用 <code>plex</code> 演示接入 <a target="_blank" rel="noopener" href="https://pages.aliyundrive.com/mobile-page/web/signup.html?code=2e45a9c">阿里云盘</a>，给内网电视机用。</p>
-</blockquote>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.26.17.png" alt="截屏2023-10-10_15.26.17.png"></p>
-<p>主要用到的几个 docker：<code>alist</code>、<code>rclone</code>、<code>xteve</code>、<code>plex</code>。</p>
-<h1 id="配置-alist"><a href="#配置-alist" class="headerlink" title="配置 alist"></a>配置 alist</h1><blockquote>
-<p>alist 默认缓存 30 分钟，如果有增删文件的操作，记得右侧手动刷新下。<br>其实到这一步已经是可以了。<a target="_blank" rel="noopener" href="http://www.kodiplayer.cn/course/2961.html">kodi 支持添加 WebDAV</a>，下面写的是接入 <code>plex</code> 的，因为这个刮完以后体验太好了。</p>
-</blockquote>
-<p>使用 alist 挂载云盘，他可以让所有云盘支持 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/WebDAV/4610909">WebDAV</a>。</p>
-<p><strong>阿里云盘</strong> 现在需要开启 <strong>Web 代理 (本地代理)</strong> </p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.11.16.png" alt="截屏2023-10-10_15.11.16.png"></p>
-<p>WebDAV 就是在链接后面加个 <code>/dav</code>，比如： <code>http://192.168.24.171:5244/dav</code>，登录的账号密码和你登录后台的一致。</p>
-<h1 id="rclone-挂载云盘"><a href="#rclone-挂载云盘" class="headerlink" title="rclone 挂载云盘"></a>rclone 挂载云盘</h1><p>使用 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35385687/article/details/128845882">rclone 配置 WebDAV</a>，然后将云盘挂载到本地。</p>
-<blockquote>
-<p>挂载云盘，被挂载的目录一定要存在，否则会报错。一定要加上 <code>Referer</code>，不加现在就是无权限。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone mount Alist:/aliyundrive_6ebcb /mnt/user/alist/aliyundrive_6ebcb --cache-dir /tmp --allow-other --vfs-cache-mode writes --header &quot;Referer: https://www.aliyundrive.com/drive&quot; &amp;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>卸载云盘。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -qzu /mnt/user/alist/aliyundrive_88db0</span><br></pre></td></tr></table></figure>
-
-<h1 id="plex-使用云盘"><a href="#plex-使用云盘" class="headerlink" title="plex 使用云盘"></a>plex 使用云盘</h1><p>映射云盘路径。</p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.32.24.png" alt="截屏2023-10-10_15.32.24.png"></p>
-<p>然后在 plex 里，就可以直接添加云盘里的资源啦。</p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.34.42.png" alt="截屏2023-10-10_15.34.42.png"></p>
-<blockquote>
-<p>需要注意一下，云盘刚添加资源的话可能不会立即扫出来，需要等几分钟。</p>
-</blockquote>
-<h1 id="电视直播"><a href="#电视直播" class="headerlink" title="电视直播"></a>电视直播</h1><blockquote>
-<p>xteve 可能需要魔法，才能正常更新 <code>视频地址</code> 和 <code>节目地址</code>。</p>
-</blockquote>
-<p>添加电视直播，<a target="_blank" rel="noopener" href="https://github.com/fanmingming/live">项目地址</a></p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.55.10.png" alt="截屏2023-10-10_15.55.10.png"></p>
-<blockquote>
-<p>plex 似乎没法直接添加 m3u，xteve 设置里的 Stream Buffer 可以修改成 <code>FFmpeg</code>。<br>jellyfin 没法更新节目的话，先把节目地址移除再重新添加。</p>
-</blockquote>
-<p>plex 那边需要在 右上角头像-账户设置-电视直播和数字录像机 (拉到最底下) 设置一下。</p>
-<blockquote>
-<p>视频地址：<a target="_blank" rel="noopener" href="http://192.168.24.171:34400/m3u/xteve.m3u">http://192.168.24.171:34400/m3u/xteve.m3u</a><br>节目地址：<a target="_blank" rel="noopener" href="http://192.168.24.171:34400/xmltv/xteve.xml">http://192.168.24.171:34400/xmltv/xteve.xml</a></p>
-</blockquote>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.57.25.png" alt="截屏2023-10-10_15.57.25.png"></p>
-<p>添加设备的时候应该可以自动扫到，没有扫到可以手动指定。</p>
-<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_16.07.45.png" alt="截屏2023-10-10_16.07.45.png"></p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>电视上安装 plex，但是我估计不一定能装上，比如我家最新版 plex 就不行，得用老版本，老版本功能太少了。</p>
-<p>所以我只能 <a target="_blank" rel="noopener" href="https://kodi.tv/">kodi</a> + jellyfin。</p>
-<p>没办法，手机上的视频会员都开到 2026 年了，电视上还得再开，开了还不够，还有 <code>云首发</code>、<code>超前点播</code>，甚至连投屏都给你限制了，看个电视真不容易。</p>
+<p>一怒之下买了 6 个摄像头和录像机，自己装了下。建议买 <strong>POE 供电</strong> 然后支持 <strong>onvif</strong> 协议的。</p>
+<p>另外还有 3 个摄像头是姐夫以前老房子那拆下来的，18 还是 19 年产的 <strong>海康威视</strong>，密码他忘了。</p>
+<h1 id="恐怖的事情"><a href="#恐怖的事情" class="headerlink" title="恐怖的事情"></a>恐怖的事情</h1><p>密码忘了，就需要重置一下。经过查阅教程，可以通过公众号 <strong>海康威视客户服务</strong> 的小程序进行在线重置。</p>
+<p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2024-01-13_09.54.54.png" alt="截屏2024-01-13_09.54.54.png"></p>
+<p>只需要在内网的机器上使用 <strong>400密码重置助手</strong> 选择摄像头，点击 <strong>忘记密码</strong> 用小程序扫码进行重置。然后按提示操作即可重置修改密码了。</p>
+<p>嗯？</p>
+<p>这个场景中，我们是不知道密码的，只进行了一个扫码重置的操作。</p>
+<p>嗯？</p>
+<p>你想，你啥也没干，摄像头被重置，重启了，然后就成别人的了？</p>
+<p>嗯？</p>
+<p><strong>平台应该会有重置的记录</strong>，但是很恐怖好吗！连陌生 Wi-Fi 危险，让陌生人连 Wi-Fi 更危险。。。</p>
 
                                     </div>
                 </div>
