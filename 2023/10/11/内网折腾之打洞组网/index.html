@@ -104,7 +104,7 @@
                                 <!-- Date -->
                                 <span class="date-time info">On
             <span class="date">2023-10-11</span>
-                                <span class="time">23:41:38</span>
+                                <span class="time">20:38:37</span>
                                 </span>
                                 
                                     <!--  Categories  -->
@@ -161,7 +161,7 @@
 <p><strong>网络-接口</strong> 新建一个接口，不配置协议，选择 <code>zt</code> 开头的。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.32.14.png" alt="截屏2023-10-11_18.32.14.png"></p>
 <p><strong>网络-防火墙-自定义规则</strong> <code>ztid</code> 替换成接口分配的 <code>ztxxxxxxx</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 自己</span><br><span class="line">iptables -I FORWARD -i ztid -j ACCEPT</span><br><span class="line">iptables -I FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -I POSTROUTING -o ztid -j MASQUERADE</span><br><span class="line"></span><br><span class="line"># 其他人</span><br><span class="line">iptables -I FORWARD -i ztid -j ACCEPT</span><br><span class="line">iptables -I FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -I POSTROUTING -o ztid -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 自己</span><br><span class="line">iptables -<span class="selector-tag">I</span> FORWARD -<span class="selector-tag">i</span> ztid -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">I</span> FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -<span class="selector-tag">I</span> POSTROUTING -o ztid -j MASQUERADE</span><br><span class="line"></span><br><span class="line"># 其他人</span><br><span class="line">iptables -<span class="selector-tag">I</span> FORWARD -<span class="selector-tag">i</span> ztid -j ACCEPT</span><br><span class="line">iptables -<span class="selector-tag">I</span> FORWARD -o ztid -j ACCEPT</span><br><span class="line">iptables -t nat -<span class="selector-tag">I</span> POSTROUTING -o ztid -j MASQUERADE</span><br></pre></td></tr></table></figure>
 
 <p><strong>网络-防火墙</strong> 点进去把刚新建的接口钩上。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-11_18.35.40.png" alt="截屏2023-10-11_18.35.40.png"></p>

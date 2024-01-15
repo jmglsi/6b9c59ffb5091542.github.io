@@ -104,7 +104,7 @@
                                 <!-- Date -->
                                 <span class="date-time info">On
             <span class="date">2023-10-10</span>
-                                <span class="time">23:41:38</span>
+                                <span class="time">20:38:37</span>
                                 </span>
                                 
                                     <!--  Categories  -->
@@ -156,12 +156,12 @@
 <blockquote>
 <p>挂载云盘，被挂载的目录一定要存在，否则会报错。一定要加上 <code>Referer</code>，不加现在就是无权限。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone mount Alist:/aliyundrive_6ebcb /mnt/user/alist/aliyundrive_6ebcb --cache-dir /tmp --allow-other --vfs-cache-mode writes --header &quot;Referer: https://www.aliyundrive.com/drive&quot; &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone mount Alist:<span class="string">/aliyundrive_6ebcb</span> <span class="string">/mnt/user/alist/aliyundrive_6ebcb</span> <span class="params">--cache-dir</span> <span class="string">/tmp</span> <span class="params">--allow-other</span> <span class="params">--vfs-cache-mode</span> writes <span class="params">--header</span> <span class="string">&quot;Referer: https://www.aliyundrive.com/drive&quot;</span> &amp;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>卸载云盘。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -qzu /mnt/user/alist/aliyundrive_88db0</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -qzu <span class="regexp">/mnt/u</span>ser<span class="regexp">/alist/</span>aliyundrive_88db0</span><br></pre></td></tr></table></figure>
 
 <h1 id="plex-使用云盘"><a href="#plex-使用云盘" class="headerlink" title="plex 使用云盘"></a>plex 使用云盘</h1><p>映射云盘路径。</p>
 <p><img src="/images/loading.png" data-original="/images/%E6%88%AA%E5%B1%8F2023-10-10_15.32.24.png" alt="截屏2023-10-10_15.32.24.png"></p>
