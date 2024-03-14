@@ -4,12 +4,15 @@
 
 # Site
 title: jmglsi 的秘密小窝
-subtitle: 爱看日漫/伪码农/学日语ing/话痨/喜欢一个人/讨厌政治/网易云、苹果重度患者
+subtitle: istj/伪码农/爱看动漫/讨厌键政/苹果重度用户/喜欢独自一个人/不听歌浑身难受
 description:
 keywords:
 author: jmglsi
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
+
+# theme_style is default to 'light'
+theme_style: light
 
 # 图片懒加载
 lazyload:
@@ -53,7 +56,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ""
   wrap: true
   hljs: false
